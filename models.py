@@ -32,11 +32,6 @@ class User(BaseModel):
             return user
         return None
 
-    def create_comment(self, comment=None):
-        if comment is None:
-            raise ValueError("Comment cannot be None")
-        comment.author = self
-
 
 class Moderator(User):
     def __init__(self):
@@ -68,9 +63,6 @@ class Comment(BaseModel):
         table_name = "comments"
 
 
-if __name__ == '__main__':
-    db.connect()
-    # db.create_tables([User, Comment])
-
-    User.create(username="Kelvin", password="password")
-    print(User.login("Kelvin", "password").username)
+db.connect()
+if User.table_exists() and not Comment.table_exists():
+    db.create_tables([User, Comment])
