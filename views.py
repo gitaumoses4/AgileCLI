@@ -1,3 +1,4 @@
+from models import User, Moderator, Admin
 print("Agile Group Project")
 print("********************")
 
@@ -7,9 +8,13 @@ print("1. Login")
 print("2. Signup")
 choice = input("I want to: ")
 if choice == '1':
-    login()
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+    user = User.login(username=username, password=password)
 elif choice == '2':
-    signup()
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+    user = User.login(username=username, password=password)
 else:
     print("Please enter a valid choice")
 
@@ -30,6 +35,7 @@ if user.role is user:
         #Edit comment where comment_id == comm_choice
     elif user_choice == 'v' or user_choice == 'v':
         #Show all comments
+        pass
     else:
         print("Enter a valid choice")
 
@@ -44,6 +50,7 @@ if user.role is moderator:
         new_comment = input("Enter new comment: ")
     elif mod_choice == 'V' or mod_choice == 'v':
         #Show all comments
+        
     elif mod_choice == 'E' or mod_choice == 'e':
         if comment_created_by == moderator_username:
             #view list of own comments
